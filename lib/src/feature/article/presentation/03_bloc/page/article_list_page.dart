@@ -7,8 +7,8 @@ import 'package:flutter_state_boilerplate/src/feature/article/presentation/03_bl
 import 'package:go_router/go_router.dart';
 
 class ArticleListPage extends StatefulWidget {
-  static const String routeName = '/article-list';
-  static const String routePath = '/article-list';
+  static const String routeName = '/bloc/article-list';
+  static const String routePath = '/bloc/article-list';
 
   const ArticleListPage({super.key});
 

@@ -5,8 +5,8 @@ import 'package:flutter_state_boilerplate/src/feature/article/presentation/03_bl
 import 'package:flutter_state_boilerplate/src/feature/article/presentation/03_bloc/bloc/article_detail/article_detail_state.dart';
 
 class ArticleDetailPage extends StatefulWidget {
-  static const String routeName = '/article-detail';
-  static const String routePath = '/article-detail/:id';
+  static const String routeName = '/bloc/article-detail';
+  static const String routePath = '/bloc/article-detail/:id';
 
   final int articleId;
 
