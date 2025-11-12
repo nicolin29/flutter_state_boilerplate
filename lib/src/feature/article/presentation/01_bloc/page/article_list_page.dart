@@ -20,7 +20,7 @@ class _ArticleListPageState extends State<ArticleListPage> {
   @override
   void initState() {
     _bloc = context.read<ArticleListBloc>();
-    _bloc.add(FetchArticles());
+    _bloc.add(const ArticleListEvent.initialFetch());
     super.initState();
   }
 
@@ -42,7 +42,7 @@ class _ArticleListPageState extends State<ArticleListPage> {
             onNotification: (scrollInfo) {
               if (scrollInfo.metrics.pixels >=
                   scrollInfo.metrics.maxScrollExtent - 200.0) {
-                _bloc.add(LoadMore());
+                _bloc.add(const ArticleListEvent.loadMore());
               }
               return false;
             },

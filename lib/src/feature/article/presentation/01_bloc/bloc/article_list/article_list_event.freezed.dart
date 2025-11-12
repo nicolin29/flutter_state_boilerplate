@@ -55,12 +55,12 @@ extension ArticleListEventPatterns on ArticleListEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( FetchArticles value)?  fetchArticles,TResult Function( LoadMore value)?  loadMore,TResult Function( Refresh value)?  refresh,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _ArticlesListInitialFetch value)?  initialFetch,TResult Function( _ArticleListLoadMore value)?  loadMore,TResult Function( _ArticleListRefresh value)?  refresh,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case FetchArticles() when fetchArticles != null:
-return fetchArticles(_that);case LoadMore() when loadMore != null:
-return loadMore(_that);case Refresh() when refresh != null:
+case _ArticlesListInitialFetch() when initialFetch != null:
+return initialFetch(_that);case _ArticleListLoadMore() when loadMore != null:
+return loadMore(_that);case _ArticleListRefresh() when refresh != null:
 return refresh(_that);case _:
   return orElse();
 
@@ -79,12 +79,12 @@ return refresh(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( FetchArticles value)  fetchArticles,required TResult Function( LoadMore value)  loadMore,required TResult Function( Refresh value)  refresh,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _ArticlesListInitialFetch value)  initialFetch,required TResult Function( _ArticleListLoadMore value)  loadMore,required TResult Function( _ArticleListRefresh value)  refresh,}){
 final _that = this;
 switch (_that) {
-case FetchArticles():
-return fetchArticles(_that);case LoadMore():
-return loadMore(_that);case Refresh():
+case _ArticlesListInitialFetch():
+return initialFetch(_that);case _ArticleListLoadMore():
+return loadMore(_that);case _ArticleListRefresh():
 return refresh(_that);case _:
   throw StateError('Unexpected subclass');
 
@@ -102,12 +102,12 @@ return refresh(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( FetchArticles value)?  fetchArticles,TResult? Function( LoadMore value)?  loadMore,TResult? Function( Refresh value)?  refresh,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _ArticlesListInitialFetch value)?  initialFetch,TResult? Function( _ArticleListLoadMore value)?  loadMore,TResult? Function( _ArticleListRefresh value)?  refresh,}){
 final _that = this;
 switch (_that) {
-case FetchArticles() when fetchArticles != null:
-return fetchArticles(_that);case LoadMore() when loadMore != null:
-return loadMore(_that);case Refresh() when refresh != null:
+case _ArticlesListInitialFetch() when initialFetch != null:
+return initialFetch(_that);case _ArticleListLoadMore() when loadMore != null:
+return loadMore(_that);case _ArticleListRefresh() when refresh != null:
 return refresh(_that);case _:
   return null;
 
@@ -125,11 +125,11 @@ return refresh(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  fetchArticles,TResult Function()?  loadMore,TResult Function()?  refresh,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initialFetch,TResult Function()?  loadMore,TResult Function()?  refresh,required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case FetchArticles() when fetchArticles != null:
-return fetchArticles();case LoadMore() when loadMore != null:
-return loadMore();case Refresh() when refresh != null:
+case _ArticlesListInitialFetch() when initialFetch != null:
+return initialFetch();case _ArticleListLoadMore() when loadMore != null:
+return loadMore();case _ArticleListRefresh() when refresh != null:
 return refresh();case _:
   return orElse();
 
@@ -148,11 +148,11 @@ return refresh();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  fetchArticles,required TResult Function()  loadMore,required TResult Function()  refresh,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initialFetch,required TResult Function()  loadMore,required TResult Function()  refresh,}) {final _that = this;
 switch (_that) {
-case FetchArticles():
-return fetchArticles();case LoadMore():
-return loadMore();case Refresh():
+case _ArticlesListInitialFetch():
+return initialFetch();case _ArticleListLoadMore():
+return loadMore();case _ArticleListRefresh():
 return refresh();case _:
   throw StateError('Unexpected subclass');
 
@@ -170,11 +170,11 @@ return refresh();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  fetchArticles,TResult? Function()?  loadMore,TResult? Function()?  refresh,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initialFetch,TResult? Function()?  loadMore,TResult? Function()?  refresh,}) {final _that = this;
 switch (_that) {
-case FetchArticles() when fetchArticles != null:
-return fetchArticles();case LoadMore() when loadMore != null:
-return loadMore();case Refresh() when refresh != null:
+case _ArticlesListInitialFetch() when initialFetch != null:
+return initialFetch();case _ArticleListLoadMore() when loadMore != null:
+return loadMore();case _ArticleListRefresh() when refresh != null:
 return refresh();case _:
   return null;
 
@@ -186,8 +186,8 @@ return refresh();case _:
 /// @nodoc
 
 
-class FetchArticles implements ArticleListEvent {
-  const FetchArticles();
+class _ArticlesListInitialFetch implements ArticleListEvent {
+  const _ArticlesListInitialFetch();
   
 
 
@@ -197,7 +197,7 @@ class FetchArticles implements ArticleListEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is FetchArticles);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticlesListInitialFetch);
 }
 
 
@@ -206,7 +206,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ArticleListEvent.fetchArticles()';
+  return 'ArticleListEvent.initialFetch()';
 }
 
 
@@ -218,8 +218,8 @@ String toString() {
 /// @nodoc
 
 
-class LoadMore implements ArticleListEvent {
-  const LoadMore();
+class _ArticleListLoadMore implements ArticleListEvent {
+  const _ArticleListLoadMore();
   
 
 
@@ -229,7 +229,7 @@ class LoadMore implements ArticleListEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoadMore);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticleListLoadMore);
 }
 
 
@@ -250,8 +250,8 @@ String toString() {
 /// @nodoc
 
 
-class Refresh implements ArticleListEvent {
-  const Refresh();
+class _ArticleListRefresh implements ArticleListEvent {
+  const _ArticleListRefresh();
   
 
 
@@ -261,7 +261,7 @@ class Refresh implements ArticleListEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Refresh);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArticleListRefresh);
 }
 
 

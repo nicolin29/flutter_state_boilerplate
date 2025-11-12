@@ -8,15 +8,16 @@ class ArticleListBloc extends Bloc<ArticleListEvent, ArticleListState> {
   int _page = 1;
 
   ArticleListBloc(this._articleRepository) : super(const ArticleListState()) {
-    on<FetchArticles>(_onFetchArticles);
-    on<LoadMore>(_onLoadMore);
-    on<Refresh>(_onRefresh);
+    on<ArticleListEvent>((event, emit) async {
+      await event.when(
+        initialFetch: () => _onInitialFetch(emit),
+        loadMore: () => _onLoadMore(emit),
+        refresh: () => _onRefresh(emit),
+      );
+    });
   }
 
-  Future<void> _onFetchArticles(
-    FetchArticles event,
-    Emitter<ArticleListState> emit,
-  ) async {
+  Future<void> _onInitialFetch(Emitter<ArticleListState> emit) async {
     emit(state.copyWith(isLoading: true, error: null));
     try {
       final response = await _articleRepository.getArticles(_page, 20);
@@ -33,10 +34,7 @@ class ArticleListBloc extends Bloc<ArticleListEvent, ArticleListState> {
     }
   }
 
-  Future<void> _onLoadMore(
-    LoadMore event,
-    Emitter<ArticleListState> emit,
-  ) async {
+  Future<void> _onLoadMore(Emitter<ArticleListState> emit) async {
     if (state.isLoadingMore || !state.hasMore) return;
 
     emit(state.copyWith(isLoadingMore: true, error: null));
@@ -55,8 +53,8 @@ class ArticleListBloc extends Bloc<ArticleListEvent, ArticleListState> {
     }
   }
 
-  Future<void> _onRefresh(Refresh event, Emitter<ArticleListState> emit) async {
+  Future<void> _onRefresh(Emitter<ArticleListState> emit) async {
     _page = 1;
-    add(const FetchArticles());
+    add(const ArticleListEvent.initialFetch());
   }
 }
