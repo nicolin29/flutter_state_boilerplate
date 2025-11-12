@@ -2,6 +2,10 @@
 
 This folder demonstrates the **BLoC (Business Logic Component)** pattern using the [`flutter_bloc`](https://pub.dev/packages/flutter_bloc) package.
 
+**BLoC** is a state management pattern in Flutter that helps you separate **business logic** from **UI code**. By using **Events** and **States**, BLoC ensures that your application’s logic is **predictable, testable, and scalable**.
+
+It is ideal for **complex applications** where multiple parts of the UI depend on shared state and require clear separation between input (Events) and output (States).
+
 ---
 
 ## 🧠 Overview
@@ -9,6 +13,7 @@ This folder demonstrates the **BLoC (Business Logic Component)** pattern using t
 - Uses **Events** and **States** to manage reactive UI updates.
 - Promotes **separation of concerns** between UI and business logic.
 - Scales well for **complex, testable**, and **predictable** applications.
+- Ideal for apps with **multiple features** and **shared state** across screens.
 
 ---
 
