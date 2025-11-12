@@ -29,7 +29,7 @@ class _ArticleDetailPageState extends State<ArticleDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Article Detail Page')),
+      appBar: AppBar(title: Text('Bloc: Article Detail Page')),
       body: BlocBuilder<ArticleDetailBloc, ArticleDetailState>(
         builder: (context, state) {
           return state.when(

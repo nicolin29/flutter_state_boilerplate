@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_state_boilerplate/src/feature/article/presentation/03_bloc/bloc/article_list/article_list_bloc.dart';
-import 'package:flutter_state_boilerplate/src/feature/article/presentation/03_bloc/bloc/article_list/article_list_event.dart';
-import 'package:flutter_state_boilerplate/src/feature/article/presentation/03_bloc/bloc/article_list/article_list_state.dart';
-import 'package:flutter_state_boilerplate/src/feature/article/presentation/03_bloc/page/article_detail_page.dart';
+import 'package:flutter_state_boilerplate/src/feature/article/presentation/04_cubit/cubit/article_list/article_list_cubit.dart';
+import 'package:flutter_state_boilerplate/src/feature/article/presentation/04_cubit/cubit/article_list/article_list_state.dart';
+import 'package:flutter_state_boilerplate/src/feature/article/presentation/04_cubit/page/article_detail_page.dart';
 import 'package:go_router/go_router.dart';
 
 class ArticleListPage extends StatefulWidget {
-  static const String routeName = '/article-list';
-  static const String routePath = '/article-list';
+  static const String routeName = '/cubit/article-list';
+  static const String routePath = '/cubit/article-list';
 
   const ArticleListPage({super.key});
 
@@ -17,12 +16,12 @@ class ArticleListPage extends StatefulWidget {
 }
 
 class _ArticleListPageState extends State<ArticleListPage> {
-  late final ArticleListBloc _bloc;
+  late final ArticleListCubit _cubit;
 
   @override
   void initState() {
-    _bloc = context.read<ArticleListBloc>();
-    _bloc.add(const ArticleListEvent.initialFetch());
+    _cubit = context.read<ArticleListCubit>();
+    _cubit.onInitialFetch();
     super.initState();
   }
 
@@ -30,7 +29,7 @@ class _ArticleListPageState extends State<ArticleListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Article List Page')),
-      body: BlocBuilder<ArticleListBloc, ArticleListState>(
+      body: BlocBuilder<ArticleListCubit, ArticleListState>(
         builder: (context, state) {
           if (state.isLoading && state.articles.isEmpty) {
             return Center(child: CircularProgressIndicator());
@@ -44,7 +43,7 @@ class _ArticleListPageState extends State<ArticleListPage> {
             onNotification: (scrollInfo) {
               if (scrollInfo.metrics.pixels >=
                   scrollInfo.metrics.maxScrollExtent - 200.0) {
-                _bloc.add(const ArticleListEvent.loadMore());
+                _cubit.onLoadMore();
               }
               return false;
             },

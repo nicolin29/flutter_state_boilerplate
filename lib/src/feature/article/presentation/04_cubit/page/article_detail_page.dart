@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_state_boilerplate/src/feature/article/presentation/03_bloc/bloc/article_detail/article_detail_bloc.dart';
-import 'package:flutter_state_boilerplate/src/feature/article/presentation/03_bloc/bloc/article_detail/article_detail_event.dart';
-import 'package:flutter_state_boilerplate/src/feature/article/presentation/03_bloc/bloc/article_detail/article_detail_state.dart';
+import 'package:flutter_state_boilerplate/src/feature/article/presentation/04_cubit/cubit/article_detail/article_detail_cubit.dart';
+import 'package:flutter_state_boilerplate/src/feature/article/presentation/04_cubit/cubit/article_detail/article_detail_state.dart';
 
 class ArticleDetailPage extends StatefulWidget {
-  static const String routeName = '/article-detail';
-  static const String routePath = '/article-detail/:id';
+  static const String routeName = '/cubit/article-detail';
+  static const String routePath = '/cubit/article-detail/:id';
 
   final int articleId;
 
@@ -17,20 +16,20 @@ class ArticleDetailPage extends StatefulWidget {
 }
 
 class _ArticleDetailPageState extends State<ArticleDetailPage> {
-  late final ArticleDetailBloc _bloc;
+  late final ArticleDetailCubit _cubit;
 
   @override
   void initState() {
-    _bloc = context.read<ArticleDetailBloc>();
-    _bloc.add(ArticleDetailEvent.fetchArticleById(widget.articleId));
+    _cubit = context.read<ArticleDetailCubit>();
+    _cubit.onFetchArticleById(widget.articleId);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Article Detail Page')),
-      body: BlocBuilder<ArticleDetailBloc, ArticleDetailState>(
+      appBar: AppBar(title: Text('Cubit: Article Detail Page')),
+      body: BlocBuilder<ArticleDetailCubit, ArticleDetailState>(
         builder: (context, state) {
           return state.when(
             initial: () => Center(child: CircularProgressIndicator()),

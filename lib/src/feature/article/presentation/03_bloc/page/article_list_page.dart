@@ -29,7 +29,7 @@ class _ArticleListPageState extends State<ArticleListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Article List Page')),
+      appBar: AppBar(title: Text('Bloc: Article List Page')),
       body: BlocBuilder<ArticleListBloc, ArticleListState>(
         builder: (context, state) {
           if (state.isLoading && state.articles.isEmpty) {

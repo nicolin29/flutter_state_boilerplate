@@ -1,31 +1,35 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_state_boilerplate/src/core/di/injector.dart';
-import 'package:flutter_state_boilerplate/src/feature/article/presentation/03_bloc/bloc/article_detail/article_detail_bloc.dart';
-import 'package:flutter_state_boilerplate/src/feature/article/presentation/03_bloc/bloc/article_list/article_list_bloc.dart';
-import 'package:flutter_state_boilerplate/src/feature/article/presentation/03_bloc/page/article_detail_page.dart';
-import 'package:flutter_state_boilerplate/src/feature/article/presentation/03_bloc/page/article_list_page.dart';
+import 'package:flutter_state_boilerplate/src/feature/article/presentation/03_bloc/bloc/article_detail/article_detail_bloc.dart'
+    as bloc;
+import 'package:flutter_state_boilerplate/src/feature/article/presentation/03_bloc/bloc/article_list/article_list_bloc.dart'
+    as bloc;
+import 'package:flutter_state_boilerplate/src/feature/article/presentation/03_bloc/page/article_detail_page.dart'
+    as bloc;
+import 'package:flutter_state_boilerplate/src/feature/article/presentation/03_bloc/page/article_list_page.dart'
+    as bloc;
 import 'package:go_router/go_router.dart';
 
 class AppRouter {
   static GoRouter router = GoRouter(
-    initialLocation: ArticleListPage.routePath,
+    initialLocation: bloc.ArticleListPage.routePath,
     routes: [
       GoRoute(
-        name: ArticleListPage.routeName,
-        path: ArticleListPage.routePath,
+        name: bloc.ArticleListPage.routeName,
+        path: bloc.ArticleListPage.routePath,
         builder: (context, state) => BlocProvider(
-          create: (_) => di<ArticleListBloc>(),
-          child: ArticleListPage(),
+          create: (_) => di<bloc.ArticleListBloc>(),
+          child: bloc.ArticleListPage(),
         ),
       ),
       GoRoute(
-        name: ArticleDetailPage.routeName,
-        path: ArticleDetailPage.routePath,
+        name: bloc.ArticleDetailPage.routeName,
+        path: bloc.ArticleDetailPage.routePath,
         builder: (context, state) {
           final articleId = int.parse(state.pathParameters['id'].toString());
           return BlocProvider(
-            create: (_) => di<ArticleDetailBloc>(),
-            child: ArticleDetailPage(articleId: articleId),
+            create: (_) => di<bloc.ArticleDetailBloc>(),
+            child: bloc.ArticleDetailPage(articleId: articleId),
           );
         },
       ),

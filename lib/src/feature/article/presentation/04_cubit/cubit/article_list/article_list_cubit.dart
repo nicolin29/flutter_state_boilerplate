@@ -1,23 +1,14 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_state_boilerplate/src/feature/article/data/repository/article_repository.dart';
-import 'package:flutter_state_boilerplate/src/feature/article/presentation/03_bloc/bloc/article_list/article_list_event.dart';
-import 'package:flutter_state_boilerplate/src/feature/article/presentation/03_bloc/bloc/article_list/article_list_state.dart';
+import 'package:flutter_state_boilerplate/src/feature/article/presentation/04_cubit/cubit/article_list/article_list_state.dart';
 
-class ArticleListBloc extends Bloc<ArticleListEvent, ArticleListState> {
+class ArticleListCubit extends Cubit<ArticleListState> {
   final ArticleRepository _articleRepository;
   int _page = 1;
 
-  ArticleListBloc(this._articleRepository) : super(const ArticleListState()) {
-    on<ArticleListEvent>((event, emit) async {
-      await event.when(
-        initialFetch: () => _onInitialFetch(emit),
-        loadMore: () => _onLoadMore(emit),
-        refresh: () => _onRefresh(emit),
-      );
-    });
-  }
+  ArticleListCubit(this._articleRepository) : super(const ArticleListState());
 
-  Future<void> _onInitialFetch(Emitter<ArticleListState> emit) async {
+  Future<void> onInitialFetch() async {
     emit(state.copyWith(isLoading: true, error: null));
     try {
       final response = await _articleRepository.getArticles(_page, 20);
@@ -34,7 +25,7 @@ class ArticleListBloc extends Bloc<ArticleListEvent, ArticleListState> {
     }
   }
 
-  Future<void> _onLoadMore(Emitter<ArticleListState> emit) async {
+  Future<void> onLoadMore() async {
     if (state.isLoadingMore || !state.hasMore) return;
 
     emit(state.copyWith(isLoadingMore: true, error: null));
@@ -53,8 +44,8 @@ class ArticleListBloc extends Bloc<ArticleListEvent, ArticleListState> {
     }
   }
 
-  Future<void> _onRefresh(Emitter<ArticleListState> emit) async {
+  Future<void> onRefresh() async {
     _page = 1;
-    add(const ArticleListEvent.initialFetch());
+    onInitialFetch();
   }
 }
