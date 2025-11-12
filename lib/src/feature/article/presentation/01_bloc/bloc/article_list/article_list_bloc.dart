@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_state_boilerplate/src/feature/article/data/repository/article_repository.dart';
-import 'package:flutter_state_boilerplate/src/feature/article/presentation/BLoC/bloc/article_list/article_list_event.dart';
-import 'package:flutter_state_boilerplate/src/feature/article/presentation/BLoC/bloc/article_list/article_list_state.dart';
+import 'package:flutter_state_boilerplate/src/feature/article/presentation/01_bloc/bloc/article_list/article_list_event.dart';
+import 'package:flutter_state_boilerplate/src/feature/article/presentation/01_bloc/bloc/article_list/article_list_state.dart';
 
 class ArticleListBloc extends Bloc<ArticleListEvent, ArticleListState> {
   final ArticleRepository _articleRepository;
