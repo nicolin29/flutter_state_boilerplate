@@ -38,22 +38,18 @@ context.read<ArticleDetailBloc>().add(ArticleDetailEvent.fetchArticleById(widget
 
 ## 📁 Structure
 
-presentation/01_bloc/
-├─ bloc/
-│ ├─ article_detail/
-│ │ ├─ article_detail_bloc.dart
-│ │ ├─ article_detail_event.dart
-│ │ ├─ article_detail_event.freezed.dart
-│ │ ├─ article_detail_state.dart
-│ │ └─ article_detail_state.freezed.dart
-│ └─ article_list/
-│ │ ├─ article_list_bloc.dart
-│ │ ├─ article_list_event.dart
-│ │ ├─ article_list_event.freezed.dart
-│ │ ├─ article_list_state.dart
-│ │ └─ article_list_state.freezed.dart
-├─ page/
-│ ├─ article_detail_page.dart
-│ └─ article_list_page.dart
+- presentation/01_bloc/
+  - bloc/
+    - article_detail/
+      - article_detail_bloc.dart
+      - article_detail_event.dart
+      - article_detail_state.dart
+    - article_list/
+      - article_list_bloc.dart
+      - article_list_event.dart
+      - article_list_state.dart
+  - page/
+    - article_detail_page.dart
+    - article_list_page.dart
 
 ---
