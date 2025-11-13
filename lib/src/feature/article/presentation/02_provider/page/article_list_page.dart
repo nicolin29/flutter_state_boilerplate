@@ -16,8 +16,6 @@ class ArticleListPage extends StatefulWidget {
 class _ArticleListPageState extends State<ArticleListPage> {
   late final ArticleListProvider _provider;
 
-  ArticleListState get state => context.watch<ArticleListProvider>().state;
-
   @override
   void initState() {
     super.initState();
@@ -30,6 +28,8 @@ class _ArticleListPageState extends State<ArticleListPage> {
 
   @override
   Widget build(BuildContext context) {
+    final state = context.watch<ArticleListProvider>().state;
+
     return Scaffold(
       appBar: AppBar(title: Text('Provider: Article List Page')),
       body: Builder(

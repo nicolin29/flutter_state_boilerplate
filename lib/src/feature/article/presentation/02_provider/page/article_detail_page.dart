@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_state_boilerplate/src/core/di/injector.dart';
-import 'package:flutter_state_boilerplate/src/feature/article/presentation/01_setstate/setstate.dart';
+import 'package:flutter_state_boilerplate/src/feature/article/presentation/02_provider/provider.dart';
+import 'package:provider/provider.dart';
 
 class ArticleDetailPage extends StatefulWidget {
   static const String routeName = '/provider/article-detail';
@@ -15,23 +15,23 @@ class ArticleDetailPage extends StatefulWidget {
 }
 
 class _ArticleDetailPageState extends State<ArticleDetailPage> {
-  late final ArticleDetailController _controller;
-
-  ArticleDetailState get state => _controller.state;
+  late final ArticleDetailProvider _provider;
 
   @override
   void initState() {
-    _controller = di<ArticleDetailController>();
-    _controller.setListener((_) => setState(() {}));
-    _controller.onFetchArticleById(widget.articleId);
-
+    _provider = context.read<ArticleDetailProvider>();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _provider.onFetchArticleById(widget.articleId);
+    });
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    final state = context.watch<ArticleDetailProvider>().state;
+
     return Scaffold(
-      appBar: AppBar(title: Text('Setstate: Article Detail Page')),
+      appBar: AppBar(title: Text('Provider: Article Detail Page')),
       body: Builder(
         builder: (context) {
           return state.when(

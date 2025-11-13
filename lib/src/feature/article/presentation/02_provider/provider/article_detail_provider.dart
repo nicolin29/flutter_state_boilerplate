@@ -1,29 +1,25 @@
+import 'package:flutter/widgets.dart';
 import 'package:flutter_state_boilerplate/src/feature/article/data/repository/article_repository.dart';
-import 'package:flutter_state_boilerplate/src/feature/article/presentation/01_setstate/setstate.dart';
+import 'package:flutter_state_boilerplate/src/feature/article/presentation/02_provider/provider.dart';
 
-class ArticleDetailProvider {
-  ArticleDetailState state = const ArticleDetailState.initial();
+class ArticleDetailProvider extends ChangeNotifier {
+  ArticleDetailState _state = const ArticleDetailState.initial();
   final ArticleRepository _articleRepository;
-  late final Function(ArticleDetailState) _listener;
+
+  ArticleDetailState get state => _state;
 
   ArticleDetailProvider(this._articleRepository);
 
-  void setListener(void Function(ArticleDetailState) listener) {
-    _listener = listener;
-  }
-
-  void setState(ArticleDetailState newState) {
-    state = newState;
-    _listener.call(newState);
-  }
-
   Future<void> onFetchArticleById(id) async {
-    setState(const ArticleDetailState.loading());
+    _state = const ArticleDetailState.loading();
+    notifyListeners();
     try {
       final article = await _articleRepository.getArticlesById(id);
-      setState(ArticleDetailState.loaded(article));
+      _state = ArticleDetailState.loaded(article);
     } catch (e) {
-      setState(ArticleDetailState.error(e.toString()));
+      _state = ArticleDetailState.error(e.toString());
+    } finally {
+      notifyListeners();
     }
   }
 }

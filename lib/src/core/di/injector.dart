@@ -23,7 +23,7 @@ Future<void> initDI() async {
 
   // --- 02_provider ---
   di.registerFactory(() => ArticleListProvider(di<ArticleRepository>()));
-  // di.registerFactory(() => ArticleDetailController(di<ArticleRepository>()));
+  di.registerFactory(() => ArticleDetailProvider(di<ArticleRepository>()));
 
   // --- 03_bloc ---
   di.registerFactory(() => ArticleListBloc(di<ArticleRepository>()));

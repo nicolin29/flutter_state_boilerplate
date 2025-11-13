@@ -1,16 +1,16 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_state_boilerplate/src/core/di/injector.dart';
+import 'package:flutter_state_boilerplate/src/feature/article/presentation/02_provider/provider.dart';
+import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter_state_boilerplate/src/feature/article/presentation/01_setstate/setstate.dart'
     as setstate;
 import 'package:flutter_state_boilerplate/src/feature/article/presentation/02_provider/provider.dart'
     as provider;
-import 'package:flutter_state_boilerplate/src/feature/article/presentation/02_provider/provider/article_list_provider.dart';
 import 'package:flutter_state_boilerplate/src/feature/article/presentation/03_bloc/bloc.dart'
     as bloc;
 import 'package:flutter_state_boilerplate/src/feature/article/presentation/04_cubit/cubit.dart'
     as cubit;
-import 'package:go_router/go_router.dart';
-import 'package:provider/provider.dart';
 
 class AppRouter {
   static GoRouter router = GoRouter(
@@ -42,14 +42,16 @@ class AppRouter {
           child: provider.ArticleListPage(),
         ),
       ),
-      // GoRoute(
-      //   name: setstate.ArticleDetailPage.routeName,
-      //   path: setstate.ArticleDetailPage.routePath,
-      //   builder: (context, state) {
-      //     final articleId = int.parse(state.pathParameters['id'].toString());
-      //     return setstate.ArticleDetailPage(articleId: articleId);
-      //   },
-      // ),
+      GoRoute(
+        name: provider.ArticleDetailPage.routeName,
+        path: provider.ArticleDetailPage.routePath,
+        builder: (context, state) => ChangeNotifierProvider(
+          create: (context) => di<ArticleDetailProvider>(),
+          child: provider.ArticleDetailPage(
+            articleId: int.parse(state.pathParameters['id'].toString()),
+          ),
+        ),
+      ),
       // --- 03_bloc ---
       GoRoute(
         name: bloc.ArticleListPage.routeName,
