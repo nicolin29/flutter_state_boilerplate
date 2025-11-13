@@ -11,42 +11,46 @@ class ArticleListProvider extends ChangeNotifier {
 
   ArticleListState get state => _state;
 
-  Future<void> onInitialFetch() async {
-    _state = _state.copyWith(isLoading: true, error: null);
+  Future<void> setState(ArticleListState newState) async {
+    _state = newState;
     notifyListeners();
+  }
+
+  Future<void> onInitialFetch() async {
+    setState(_state.copyWith(isLoading: true, error: null));
 
     try {
       final response = await _articleRepository.getArticles(_page, 20);
-      _state = _state.copyWith(
-        isLoading: false,
-        error: null,
-        hasMore: response.hasMore ?? false,
-        articles: response.articles ?? [],
+      setState(
+        _state.copyWith(
+          isLoading: false,
+          error: null,
+          hasMore: response.hasMore ?? false,
+          articles: response.articles ?? [],
+        ),
       );
     } catch (e) {
-      _state = _state.copyWith(isLoading: false, error: e.toString());
-    } finally {
-      notifyListeners();
+      setState(_state.copyWith(isLoading: false, error: e.toString()));
     }
   }
 
   Future<void> onLoadMore() async {
     if (state.isLoadingMore || !state.hasMore) return;
 
-    _state = _state.copyWith(isLoadingMore: true, error: null);
-    notifyListeners();
+    setState(_state.copyWith(isLoadingMore: true, error: null));
+
     try {
       final response = await _articleRepository.getArticles(++_page, 20);
-      _state = _state.copyWith(
-        isLoadingMore: false,
-        error: null,
-        hasMore: response.hasMore ?? false,
-        articles: [...state.articles, ...response.articles ?? []],
+      setState(
+        _state.copyWith(
+          isLoadingMore: false,
+          error: null,
+          hasMore: response.hasMore ?? false,
+          articles: [...state.articles, ...response.articles ?? []],
+        ),
       );
-      notifyListeners();
     } catch (e) {
-      _state = _state.copyWith(isLoadingMore: false, error: e.toString());
-      notifyListeners();
+      setState(_state.copyWith(isLoadingMore: false, error: e.toString()));
     }
   }
 

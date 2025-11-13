@@ -10,16 +10,19 @@ class ArticleDetailProvider extends ChangeNotifier {
 
   ArticleDetailProvider(this._articleRepository);
 
+  Future<void> setState(ArticleDetailState newState) async {
+    _state = newState;
+    notifyListeners();
+  }
+
   Future<void> onFetchArticleById(id) async {
-    _state = const ArticleDetailState.loading();
+    setState(const ArticleDetailState.loading());
     notifyListeners();
     try {
       final article = await _articleRepository.getArticlesById(id);
-      _state = ArticleDetailState.loaded(article);
+      setState(ArticleDetailState.loaded(article));
     } catch (e) {
-      _state = ArticleDetailState.error(e.toString());
-    } finally {
-      notifyListeners();
+      setState(ArticleDetailState.error(e.toString()));
     }
   }
 }
