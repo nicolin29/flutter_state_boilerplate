@@ -13,6 +13,8 @@ import 'package:flutter_state_boilerplate/src/feature/article/presentation/04_cu
     as cubit;
 import 'package:flutter_state_boilerplate/src/feature/article/presentation/05_getx/getx.dart'
     as getx;
+import 'package:flutter_state_boilerplate/src/feature/article/presentation/09_valuenotifier/valuenotifier.dart'
+    as valuenotifier;
 
 class AppRouter {
   static GoRouter router = GoRouter(
@@ -20,7 +22,8 @@ class AppRouter {
     // initialLocation: cubit.ArticleListPage.routePath,
     // initialLocation: setstate.ArticleListPage.routePath,
     // initialLocation: provider.ArticleListPage.routePath,
-    initialLocation: getx.ArticleListPage.routePath,
+    // initialLocation: getx.ArticleListPage.routePath,
+    initialLocation: valuenotifier.ArticleListPage.routePath,
     routes: [
       // --- 01_setstate ---
       GoRoute(
@@ -110,6 +113,23 @@ class AppRouter {
         builder: (context, state) {
           getx.ArticleDetailBinding().dependencies();
           return getx.ArticleDetailPage(
+            articleId: int.parse(state.pathParameters['id'].toString()),
+          );
+        },
+      ),
+      // --- 09_valuenotifier ---
+      GoRoute(
+        name: valuenotifier.ArticleListPage.routeName,
+        path: valuenotifier.ArticleListPage.routePath,
+        builder: (context, state) {
+          return valuenotifier.ArticleListPage();
+        },
+      ),
+      GoRoute(
+        name: valuenotifier.ArticleDetailPage.routeName,
+        path: valuenotifier.ArticleDetailPage.routePath,
+        builder: (context, state) {
+          return valuenotifier.ArticleDetailPage(
             articleId: int.parse(state.pathParameters['id'].toString()),
           );
         },

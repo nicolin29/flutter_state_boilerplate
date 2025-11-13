@@ -1,11 +1,17 @@
+import 'package:get_it/get_it.dart';
 import 'package:flutter_state_boilerplate/src/core/network/api_client.dart';
 import 'package:flutter_state_boilerplate/src/feature/article/data/repository/article_repository.dart';
 import 'package:flutter_state_boilerplate/src/feature/article/data/service/article_service.dart';
-import 'package:flutter_state_boilerplate/src/feature/article/presentation/01_setstate/setstate.dart';
-import 'package:flutter_state_boilerplate/src/feature/article/presentation/02_provider/provider.dart';
-import 'package:flutter_state_boilerplate/src/feature/article/presentation/03_bloc/bloc.dart';
-import 'package:flutter_state_boilerplate/src/feature/article/presentation/04_cubit/cubit.dart';
-import 'package:get_it/get_it.dart';
+import 'package:flutter_state_boilerplate/src/feature/article/presentation/01_setstate/setstate.dart'
+    as setstate;
+import 'package:flutter_state_boilerplate/src/feature/article/presentation/02_provider/provider.dart'
+    as provider;
+import 'package:flutter_state_boilerplate/src/feature/article/presentation/03_bloc/bloc.dart'
+    as bloc;
+import 'package:flutter_state_boilerplate/src/feature/article/presentation/04_cubit/cubit.dart'
+    as cubit;
+import 'package:flutter_state_boilerplate/src/feature/article/presentation/09_valuenotifier/valuenotifier.dart'
+    as valuenotifier;
 
 final di = GetIt.instance;
 
@@ -18,18 +24,34 @@ Future<void> initDI() async {
   di.registerLazySingleton(() => ArticleRepository(di<ArticleService>()));
 
   // --- 01_setstate ---
-  di.registerFactory(() => ArticleListController(di<ArticleRepository>()));
-  di.registerFactory(() => ArticleDetailController(di<ArticleRepository>()));
+  di.registerFactory(
+    () => setstate.ArticleListController(di<ArticleRepository>()),
+  );
+  di.registerFactory(
+    () => setstate.ArticleDetailController(di<ArticleRepository>()),
+  );
 
   // --- 02_provider ---
-  di.registerFactory(() => ArticleListProvider(di<ArticleRepository>()));
-  di.registerFactory(() => ArticleDetailProvider(di<ArticleRepository>()));
+  di.registerFactory(
+    () => provider.ArticleListProvider(di<ArticleRepository>()),
+  );
+  di.registerFactory(
+    () => provider.ArticleDetailProvider(di<ArticleRepository>()),
+  );
 
   // --- 03_bloc ---
-  di.registerFactory(() => ArticleListBloc(di<ArticleRepository>()));
-  di.registerFactory(() => ArticleDetailBloc(di<ArticleRepository>()));
+  di.registerFactory(() => bloc.ArticleListBloc(di<ArticleRepository>()));
+  di.registerFactory(() => bloc.ArticleDetailBloc(di<ArticleRepository>()));
 
   // --- 04_cubit ---
-  di.registerFactory(() => ArticleListCubit(di<ArticleRepository>()));
-  di.registerFactory(() => ArticleDetailCubit(di<ArticleRepository>()));
+  di.registerFactory(() => cubit.ArticleListCubit(di<ArticleRepository>()));
+  di.registerFactory(() => cubit.ArticleDetailCubit(di<ArticleRepository>()));
+
+  // --- 09_valuenotifier ---
+  di.registerFactory(
+    () => valuenotifier.ArticleListController(di<ArticleRepository>()),
+  );
+  di.registerFactory(
+    () => valuenotifier.ArticleDetailController(di<ArticleRepository>()),
+  );
 }
