@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_state_boilerplate/src/feature/article/presentation/03_bloc/bloc/article_list/article_list_bloc.dart';
-import 'package:flutter_state_boilerplate/src/feature/article/presentation/03_bloc/bloc/article_list/article_list_event.dart';
-import 'package:flutter_state_boilerplate/src/feature/article/presentation/03_bloc/bloc/article_list/article_list_state.dart';
-import 'package:flutter_state_boilerplate/src/feature/article/presentation/03_bloc/page/article_detail_page.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_state_boilerplate/src/feature/article/presentation/03_bloc/bloc.dart';
 
 class ArticleListPage extends StatefulWidget {
   static const String routeName = '/bloc/article-list';

@@ -43,7 +43,7 @@ context.read<ArticleDetailBloc>().add(ArticleDetailEvent.fetchArticleById(widget
 
 ## 📁 Structure
 
-- presentation/01_bloc/
+- presentation/03_bloc/
   - bloc/
     - article_detail/
       - article_detail_bloc.dart

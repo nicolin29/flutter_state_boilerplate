@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_state_boilerplate/src/feature/article/data/repository/article_repository.dart';
-import 'package:flutter_state_boilerplate/src/feature/article/presentation/04_cubit/cubit/article_detail/article_detail_state.dart';
+import 'package:flutter_state_boilerplate/src/feature/article/presentation/04_cubit/cubit.dart';
 
 class ArticleDetailCubit extends Cubit<ArticleDetailState> {
   final ArticleRepository _articleRepository;

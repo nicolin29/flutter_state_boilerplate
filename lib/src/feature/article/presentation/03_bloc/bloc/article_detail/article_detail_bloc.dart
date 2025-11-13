@@ -1,7 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_state_boilerplate/src/feature/article/data/repository/article_repository.dart';
-import 'package:flutter_state_boilerplate/src/feature/article/presentation/03_bloc/bloc/article_detail/article_detail_event.dart';
-import 'package:flutter_state_boilerplate/src/feature/article/presentation/03_bloc/bloc/article_detail/article_detail_state.dart';
+import 'package:flutter_state_boilerplate/src/feature/article/presentation/03_bloc/bloc.dart';
 
 class ArticleDetailBloc extends Bloc<ArticleDetailEvent, ArticleDetailState> {
   final ArticleRepository _articleRepository;

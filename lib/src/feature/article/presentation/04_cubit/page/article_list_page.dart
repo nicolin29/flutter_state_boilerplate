@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_state_boilerplate/src/feature/article/presentation/04_cubit/cubit/article_list/article_list_cubit.dart';
-import 'package:flutter_state_boilerplate/src/feature/article/presentation/04_cubit/cubit/article_list/article_list_state.dart';
-import 'package:flutter_state_boilerplate/src/feature/article/presentation/04_cubit/page/article_detail_page.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_state_boilerplate/src/feature/article/presentation/04_cubit/cubit.dart';
 
 class ArticleListPage extends StatefulWidget {
   static const String routeName = '/cubit/article-list';

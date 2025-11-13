@@ -42,7 +42,7 @@ context.read<ArticleDetailCubit>().fetchArticleById(widget.articleId);
 
 ## 📁 Structure
 
-- presentation/01_bloc/
+- presentation/04_cubit/
   - bloc/
     - article_detail/
       - article_detail_cubit.dart
