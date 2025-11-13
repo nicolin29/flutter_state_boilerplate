@@ -20,17 +20,14 @@ class AppRouter {
         path: setstate.ArticleListPage.routePath,
         builder: (context, state) => setstate.ArticleListPage(),
       ),
-      // GoRoute(
-      //   name: bloc.ArticleDetailPage.routeName,
-      //   path: bloc.ArticleDetailPage.routePath,
-      //   builder: (context, state) {
-      //     final articleId = int.parse(state.pathParameters['id'].toString());
-      //     return BlocProvider(
-      //       create: (_) => di<bloc.ArticleDetailBloc>(),
-      //       child: bloc.ArticleDetailPage(articleId: articleId),
-      //     );
-      //   },
-      // ),
+      GoRoute(
+        name: setstate.ArticleDetailPage.routeName,
+        path: setstate.ArticleDetailPage.routePath,
+        builder: (context, state) {
+          final articleId = int.parse(state.pathParameters['id'].toString());
+          return setstate.ArticleDetailPage(articleId: articleId);
+        },
+      ),
       // --- 03_bloc ---
       GoRoute(
         name: bloc.ArticleListPage.routeName,

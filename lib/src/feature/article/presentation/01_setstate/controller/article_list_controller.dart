@@ -1,10 +1,10 @@
 import 'package:flutter_state_boilerplate/src/feature/article/data/repository/article_repository.dart';
-import 'package:flutter_state_boilerplate/src/feature/article/presentation/01_setstate/state/article_list_state.dart';
+import 'package:flutter_state_boilerplate/src/feature/article/presentation/01_setstate/setstate.dart';
 
 class ArticleListController {
   ArticleListState state = const ArticleListState();
   final ArticleRepository _articleRepository;
-  void Function(ArticleListState)? _listener;
+  late final Function(ArticleListState) _listener;
   int _page = 1;
 
   ArticleListController(this._articleRepository);
@@ -15,7 +15,7 @@ class ArticleListController {
 
   void setState(ArticleListState newState) {
     state = newState;
-    _listener?.call(newState);
+    _listener.call(newState);
   }
 
   Future<void> onInitialFetch() async {

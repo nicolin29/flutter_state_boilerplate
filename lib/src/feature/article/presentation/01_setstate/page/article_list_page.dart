@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_state_boilerplate/src/core/di/injector.dart';
-import 'package:flutter_state_boilerplate/src/feature/article/presentation/01_setstate/controller/article_list_controller.dart';
-import 'package:flutter_state_boilerplate/src/feature/article/presentation/01_setstate/state/article_list_state.dart';
+import 'package:flutter_state_boilerplate/src/feature/article/presentation/01_setstate/setstate.dart';
 import 'package:go_router/go_router.dart';
 
 class ArticleListPage extends StatefulWidget {
@@ -22,9 +21,7 @@ class _ArticleListPageState extends State<ArticleListPage> {
   @override
   void initState() {
     _controller = di<ArticleListController>();
-    _controller.setListener((newState) {
-      setState(() {});
-    });
+    _controller.setListener((_) => setState(() {}));
     _controller.onInitialFetch();
 
     super.initState();
@@ -57,12 +54,12 @@ class _ArticleListPageState extends State<ArticleListPage> {
               itemBuilder: (context, index) {
                 if (index < state.articles.length) {
                   return ListTile(
-                    // onTap: () => context.pushNamed(
-                    //   ArticleDetailPage.routeName,
-                    //   pathParameters: {
-                    //     'id': state.articles[index].id.toString(),
-                    //   },
-                    // ),
+                    onTap: () => context.pushNamed(
+                      ArticleDetailPage.routeName,
+                      pathParameters: {
+                        'id': state.articles[index].id.toString(),
+                      },
+                    ),
                     title: Text(state.articles[index].title ?? '-'),
                   );
                 } else {
