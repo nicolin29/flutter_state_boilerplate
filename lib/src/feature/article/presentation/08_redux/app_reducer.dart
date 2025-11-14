@@ -2,7 +2,10 @@ import 'package:flutter_state_boilerplate/src/feature/article/presentation/08_re
 
 AppState appReducer(AppState state, dynamic action) {
   return AppState(
-    articleListState: articleListReducer(state.articleListState, action),
+    articleListState: ArticleListReducer.reducer(
+      state.articleListState,
+      action,
+    ),
     // articleDetailState: articleDetailReducer(state.articleDetailState, action),
   );
 }

@@ -14,6 +14,8 @@ import 'package:flutter_state_boilerplate/src/feature/article/presentation/06_ri
     as riverpod;
 import 'package:flutter_state_boilerplate/src/feature/article/presentation/07_mobx/mobx.dart'
     as mobx;
+import 'package:flutter_state_boilerplate/src/feature/article/presentation/08_redux/redux.dart'
+    as redux;
 import 'package:flutter_state_boilerplate/src/feature/article/presentation/09_valuenotifier/valuenotifier.dart'
     as valuenotifier;
 
@@ -62,6 +64,12 @@ Future<void> initDI() async {
   // --- 07_mobx ---
   di.registerFactory(() => mobx.ArticleListStore(di<ArticleRepository>()));
   di.registerFactory(() => mobx.ArticleDetailStore(di<ArticleRepository>()));
+
+  // --- 08_redux ---
+  di.registerFactory(
+    () => redux.ArticleListMiddleware(di<ArticleRepository>()),
+  );
+  // di.registerFactory(() => mobx.ArticleDetailStore(di<ArticleRepository>()));
 
   // --- 09_valuenotifier ---
   di.registerFactory(
