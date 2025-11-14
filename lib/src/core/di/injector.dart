@@ -69,7 +69,9 @@ Future<void> initDI() async {
   di.registerFactory(
     () => redux.ArticleListMiddleware(di<ArticleRepository>()),
   );
-  // di.registerFactory(() => mobx.ArticleDetailStore(di<ArticleRepository>()));
+  di.registerFactory(
+    () => redux.ArticleDetailMiddleware(di<ArticleRepository>()),
+  );
 
   // --- 09_valuenotifier ---
   di.registerFactory(

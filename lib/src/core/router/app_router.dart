@@ -168,6 +168,15 @@ class AppRouter {
           return redux.ArticleListPage();
         },
       ),
+      GoRoute(
+        name: redux.ArticleDetailPage.routeName,
+        path: redux.ArticleDetailPage.routePath,
+        builder: (context, state) {
+          return redux.ArticleDetailPage(
+            articleId: int.parse(state.pathParameters['id'].toString()),
+          );
+        },
+      ),
       // --- 09_valuenotifier ---
       GoRoute(
         name: valuenotifier.ArticleListPage.routeName,

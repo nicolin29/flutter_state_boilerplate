@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$AppState {
 
- ArticleListState get articleListState;
+ ArticleListState get articleListState; ArticleDetailState get articleDetailState;
 /// Create a copy of AppState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $AppStateCopyWith<AppState> get copyWith => _$AppStateCopyWithImpl<AppState>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AppState&&(identical(other.articleListState, articleListState) || other.articleListState == articleListState));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AppState&&(identical(other.articleListState, articleListState) || other.articleListState == articleListState)&&(identical(other.articleDetailState, articleDetailState) || other.articleDetailState == articleDetailState));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,articleListState);
+int get hashCode => Object.hash(runtimeType,articleListState,articleDetailState);
 
 @override
 String toString() {
-  return 'AppState(articleListState: $articleListState)';
+  return 'AppState(articleListState: $articleListState, articleDetailState: $articleDetailState)';
 }
 
 
@@ -45,11 +45,11 @@ abstract mixin class $AppStateCopyWith<$Res>  {
   factory $AppStateCopyWith(AppState value, $Res Function(AppState) _then) = _$AppStateCopyWithImpl;
 @useResult
 $Res call({
- ArticleListState articleListState
+ ArticleListState articleListState, ArticleDetailState articleDetailState
 });
 
 
-$ArticleListStateCopyWith<$Res> get articleListState;
+$ArticleListStateCopyWith<$Res> get articleListState;$ArticleDetailStateCopyWith<$Res> get articleDetailState;
 
 }
 /// @nodoc
@@ -62,10 +62,11 @@ class _$AppStateCopyWithImpl<$Res>
 
 /// Create a copy of AppState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? articleListState = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? articleListState = null,Object? articleDetailState = null,}) {
   return _then(_self.copyWith(
 articleListState: null == articleListState ? _self.articleListState : articleListState // ignore: cast_nullable_to_non_nullable
-as ArticleListState,
+as ArticleListState,articleDetailState: null == articleDetailState ? _self.articleDetailState : articleDetailState // ignore: cast_nullable_to_non_nullable
+as ArticleDetailState,
   ));
 }
 /// Create a copy of AppState
@@ -76,6 +77,15 @@ $ArticleListStateCopyWith<$Res> get articleListState {
   
   return $ArticleListStateCopyWith<$Res>(_self.articleListState, (value) {
     return _then(_self.copyWith(articleListState: value));
+  });
+}/// Create a copy of AppState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ArticleDetailStateCopyWith<$Res> get articleDetailState {
+  
+  return $ArticleDetailStateCopyWith<$Res>(_self.articleDetailState, (value) {
+    return _then(_self.copyWith(articleDetailState: value));
   });
 }
 }
@@ -159,10 +169,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( ArticleListState articleListState)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( ArticleListState articleListState,  ArticleDetailState articleDetailState)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _AppState() when $default != null:
-return $default(_that.articleListState);case _:
+return $default(_that.articleListState,_that.articleDetailState);case _:
   return orElse();
 
 }
@@ -180,10 +190,10 @@ return $default(_that.articleListState);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( ArticleListState articleListState)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( ArticleListState articleListState,  ArticleDetailState articleDetailState)  $default,) {final _that = this;
 switch (_that) {
 case _AppState():
-return $default(_that.articleListState);case _:
+return $default(_that.articleListState,_that.articleDetailState);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -200,10 +210,10 @@ return $default(_that.articleListState);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( ArticleListState articleListState)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( ArticleListState articleListState,  ArticleDetailState articleDetailState)?  $default,) {final _that = this;
 switch (_that) {
 case _AppState() when $default != null:
-return $default(_that.articleListState);case _:
+return $default(_that.articleListState,_that.articleDetailState);case _:
   return null;
 
 }
@@ -215,10 +225,11 @@ return $default(_that.articleListState);case _:
 
 
 class _AppState implements AppState {
-  const _AppState({required this.articleListState});
+  const _AppState({required this.articleListState, required this.articleDetailState});
   
 
 @override final  ArticleListState articleListState;
+@override final  ArticleDetailState articleDetailState;
 
 /// Create a copy of AppState
 /// with the given fields replaced by the non-null parameter values.
@@ -230,16 +241,16 @@ _$AppStateCopyWith<_AppState> get copyWith => __$AppStateCopyWithImpl<_AppState>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AppState&&(identical(other.articleListState, articleListState) || other.articleListState == articleListState));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AppState&&(identical(other.articleListState, articleListState) || other.articleListState == articleListState)&&(identical(other.articleDetailState, articleDetailState) || other.articleDetailState == articleDetailState));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,articleListState);
+int get hashCode => Object.hash(runtimeType,articleListState,articleDetailState);
 
 @override
 String toString() {
-  return 'AppState(articleListState: $articleListState)';
+  return 'AppState(articleListState: $articleListState, articleDetailState: $articleDetailState)';
 }
 
 
@@ -250,11 +261,11 @@ abstract mixin class _$AppStateCopyWith<$Res> implements $AppStateCopyWith<$Res>
   factory _$AppStateCopyWith(_AppState value, $Res Function(_AppState) _then) = __$AppStateCopyWithImpl;
 @override @useResult
 $Res call({
- ArticleListState articleListState
+ ArticleListState articleListState, ArticleDetailState articleDetailState
 });
 
 
-@override $ArticleListStateCopyWith<$Res> get articleListState;
+@override $ArticleListStateCopyWith<$Res> get articleListState;@override $ArticleDetailStateCopyWith<$Res> get articleDetailState;
 
 }
 /// @nodoc
@@ -267,10 +278,11 @@ class __$AppStateCopyWithImpl<$Res>
 
 /// Create a copy of AppState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? articleListState = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? articleListState = null,Object? articleDetailState = null,}) {
   return _then(_AppState(
 articleListState: null == articleListState ? _self.articleListState : articleListState // ignore: cast_nullable_to_non_nullable
-as ArticleListState,
+as ArticleListState,articleDetailState: null == articleDetailState ? _self.articleDetailState : articleDetailState // ignore: cast_nullable_to_non_nullable
+as ArticleDetailState,
   ));
 }
 
@@ -282,6 +294,15 @@ $ArticleListStateCopyWith<$Res> get articleListState {
   
   return $ArticleListStateCopyWith<$Res>(_self.articleListState, (value) {
     return _then(_self.copyWith(articleListState: value));
+  });
+}/// Create a copy of AppState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ArticleDetailStateCopyWith<$Res> get articleDetailState {
+  
+  return $ArticleDetailStateCopyWith<$Res>(_self.articleDetailState, (value) {
+    return _then(_self.copyWith(articleDetailState: value));
   });
 }
 }

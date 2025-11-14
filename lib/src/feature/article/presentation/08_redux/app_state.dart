@@ -7,11 +7,11 @@ part 'app_state.freezed.dart';
 abstract class AppState with _$AppState {
   const factory AppState({
     required ArticleListState articleListState,
-    // required ArticleDetailState articleDetailState,   // 👈 add this
+    required ArticleDetailState articleDetailState, // 👈 add this
   }) = _AppState;
 
   factory AppState.initial() => AppState(
     articleListState: const ArticleListState(),
-    // articleDetailState: const ArticleDetailState(),   // 👈 add this
+    articleDetailState: const ArticleDetailState.initial(), // 👈 add this
   );
 }

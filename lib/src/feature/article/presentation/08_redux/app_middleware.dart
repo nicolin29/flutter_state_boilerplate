@@ -4,5 +4,8 @@ import 'package:redux/redux.dart';
 
 List<Middleware<AppState>> createMiddlewares() {
   // just return your feature middleware list
-  return [...di<ArticleListMiddleware>().middlewares];
+  return [
+    ...di<ArticleListMiddleware>().middlewares,
+    ...di<ArticleDetailMiddleware>().middlewares,
+  ];
 }

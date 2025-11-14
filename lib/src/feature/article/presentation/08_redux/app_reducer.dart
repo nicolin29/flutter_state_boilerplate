@@ -6,6 +6,9 @@ AppState appReducer(AppState state, dynamic action) {
       state.articleListState,
       action,
     ),
-    // articleDetailState: articleDetailReducer(state.articleDetailState, action),
+    articleDetailState: ArticleDetailReducer.reducer(
+      state.articleDetailState,
+      action,
+    ),
   );
 }
