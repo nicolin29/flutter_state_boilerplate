@@ -82,7 +82,7 @@ Every state management example implements the **same exact feature**, allowing a
 1. **Clone the repo**
 
    ```bash
-   git clone https://github.com/yourusername/flutter-state-mgmt-boilerplate.git
+   git clone https://github.com/nicolin29/flutter_state_boilerplate
    ```
 
 2. **Install dependencies**
