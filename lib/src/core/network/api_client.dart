@@ -17,7 +17,6 @@ class ApiClient {
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? data,
   }) async {
-    await Future.delayed(Duration(seconds: 2));
     return await _client.get(path, queryParameters: queryParams, data: data);
   }
 
@@ -26,7 +25,6 @@ class ApiClient {
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? data,
   }) async {
-    await Future.delayed(Duration(seconds: 2));
     return await _client.post(path, queryParameters: queryParams, data: data);
   }
 
@@ -35,7 +33,6 @@ class ApiClient {
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? data,
   }) async {
-    await Future.delayed(Duration(seconds: 2));
     return await _client.put(path, queryParameters: queryParams, data: data);
   }
 
@@ -44,7 +41,6 @@ class ApiClient {
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? data,
   }) async {
-    await Future.delayed(Duration(seconds: 2));
     return await _client.delete(path, queryParameters: queryParams, data: data);
   }
 }
